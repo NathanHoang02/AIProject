@@ -14,8 +14,8 @@ def train_and_save_model():
 
     # Step 1: Load general dataset
     general_df = pd.read_csv('./generalizedDatasetEmails.csv')
-    X_general = general_df['text']
-    y_general = general_df['label']
+    X_general = general_df['Text']
+    y_general = general_df['Label']
 
     # Step 2: Vectorize
     vectorizer = TfidfVectorizer(stop_words='english')
