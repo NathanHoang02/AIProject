@@ -26,11 +26,12 @@ def train_and_save_model():
     model.fit(X_general_vectors, y_general)
 
     # Step 4: Fine-tune on college-specific dataset
-    # college_df = pd.read_csv('datasets/college_validate.csv')
-    # X_college = college_df['text']
-    # y_college = college_df['label']
-    # X_college_vectors = vectorizer.transform(X_college)
-    # model.fit(X_college_vectors, y_college)
+    college_df = pd.read_csv('./TestDataSet.csv')
+    X_college = college_df['Text']
+    y_college = college_df['Label']
+    X_college_vectors = vectorizer.transform(X_college)
+    model.fit(X_college_vectors, y_college)
+
 
     # Step 5: Save model and vectorizer
     joblib.dump(model, MODEL_FILE)
