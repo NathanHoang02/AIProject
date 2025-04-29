@@ -34,8 +34,8 @@ def train_and_save_model():
 
 
     # Step 5: Save model and vectorizer
-    joblib.dump(model, MODEL_FILE)
-    joblib.dump(vectorizer, VECTORIZER_FILE)
+    # joblib.dump(model, MODEL_FILE)
+    # joblib.dump(vectorizer, VECTORIZER_FILE)
 
     print("Model trained and saved.")
     return model, vectorizer
@@ -46,15 +46,15 @@ def load_model_and_vectorizer():
     vectorizer = joblib.load(VECTORIZER_FILE)
     return model, vectorizer
 
-def classify_email(model, vectorizer, text, threshold=0.7):
+def classify_email(model, vectorizer, text, threshold=0.4):
     vect = vectorizer.transform([text])
     probs = model.predict_proba(vect)[0]
     max_prob = probs.max()
     predicted_class = model.classes_[probs.argmax()]
 
     if max_prob < threshold:
-        return "other"
-    return predicted_class
+        return f"defaulted to 'other' : {predicted_class} (failed threshold check) ({max_prob:.2f})"
+    return f"{predicted_class} ({max_prob:.2f})"
 
 def main():
     if os.path.exists(MODEL_FILE) and os.path.exists(VECTORIZER_FILE):
