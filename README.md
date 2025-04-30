@@ -11,7 +11,7 @@ python main.py
 ```
 After training is completed you will be presented with a prompt, choose between:
 
-- 1 to evaluate the model on a test dataset and see its accuracy and confusion matrix.
+- 1 to evaluate the model on a test dataset and see its accuracy (Classification Report) and confusion matrix.
 
 - 2 to manually enter email text and get a predicted category with confidence.
 
